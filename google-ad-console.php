@@ -6,6 +6,7 @@
  * Version: 0.1
  * Author: Steve Grunwell
  * Author URI: https://stevegrunwell.com
+ * Text Domain: google-ad-console
  *
  * @package Google Ad Console
  * @author Steve Grunwell
@@ -74,3 +75,15 @@ function googleadconsole_toggle_console_url() {
 
 	return add_query_arg( 'google_force_console', $make_visible );
 }
+
+/**
+ * Load the plugin language files.
+ */
+function googleadconsole_load_plugin_textdomain() {
+	load_plugin_textdomain(
+		'google-ad-console',
+		false,
+		dirname( plugin_basename( __FILE__ ) ) . '/languages'
+	);
+}
+add_action( 'plugins_loaded', 'googleadconsole_load_plugin_textdomain' );
